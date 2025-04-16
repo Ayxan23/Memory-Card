@@ -1,9 +1,18 @@
 const elements = document.querySelectorAll(".box div");
 
 const reset = document.querySelector(".reset");
-const score = document.getElementById("score1");
+const score = document.getElementById("score");
+const click = document.getElementById("click");
+const over = document.getElementById("over");
+const overBox = document.querySelector(".over");
 
-let count1 = 0;
+let first = "";
+let second = "";
+let key = true;
+let disable = false;
+let counter = 0;
+
+let result = 0;
 const cardArr = [
   "#FF204E",
   "#00FF9C",
@@ -37,36 +46,47 @@ function mySharedLogic() {
   });
 }
 
+function sharedReset() {
+  result = 0;
+  score.innerHTML = result;
+  mySharedLogic();
+  second = "";
+  first = "";
+  disable = false;
+  counter = 0;
+  click.innerHTML = counter;
+  key = true;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   mySharedLogic();
 });
 
-reset.addEventListener("click", () => {
-  count1 = 0;
-  score.innerHTML = count1;
-  mySharedLogic();
+over.addEventListener("click", () => {
+  sharedReset();
+  overBox.style.display = "none";
 });
 
-let first = "";
-let second = "";
-let counter = true;
-let disable = false;
+reset.addEventListener("click", () => {
+  sharedReset();
+});
+
 
 elements.forEach((element, i) =>
   element.addEventListener("click", () => {
     if (disable || element.classList.contains("disabled")) return;
-    
+
     element.classList.add("disabled");
-    if (counter) {
+    element.style.backgroundImage = "none";
+    click.innerHTML = ++counter;
+
+    if (key) {
       first = element;
-      element.style.backgroundImage = "none";
-      counter = false;
+      key = false;
     } else {
       second = element;
-      element.style.backgroundImage = "none";
-      counter = true;
+      key = true;
       disable = true;
-
       checkWinner(first, second);
     }
   })
@@ -75,7 +95,11 @@ elements.forEach((element, i) =>
 function checkWinner(first, second) {
   if (second.style.backgroundColor == first.style.backgroundColor) {
     disable = false;
-    score.innerHTML = ++count1;
+    score.innerHTML = ++result;
+
+    if (result == 6) {
+      overBox.style.display = "flex";
+    }
   } else {
     setTimeout(() => {
       first.style.backgroundImage = "url(./img/cardbg.png)";

@@ -24,7 +24,47 @@ body * {
   flex-direction: column;
 }
 
-.score {
+.over {
+  position: absolute;
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+}
+
+.over h2 {
+  font-size: 120px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.518);
+}
+
+.over p {
+  font-size: 28px;
+  font-weight: 600;
+  background-color: rgb(0, 197, 138);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.over p:active {
+  opacity: 0.8;
+}
+
+.top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vh;
+}
+
+.score,
+.click {
   text-align: center;
   font-size: 34px;
   margin-top: 15px;
@@ -32,17 +72,22 @@ body * {
 
 .score p {
   margin-top: 5px;
-  font-weight: 400;
+  font-weight: 700;
+  color: rgb(0, 251, 255);
 }
 
 .score h2,
-.score p span {
+.score p {
   font-size: 40px;
-  font-weight: 700;
 }
 
-.score p span:nth-child(1) {
-  color: rgb(0, 251, 255);
+.score h2{
+  font-weight: 600;
+}
+
+.click {
+  color: rgb(255, 183, 0);
+  font-weight: 500;
 }
 
 .reset {
@@ -56,6 +101,7 @@ body * {
   font-weight: 500;
   font-size: 25px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .reset:active {
@@ -89,7 +135,7 @@ body * {
   transition: 0.15s;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 760px) {
   .score {
     font-size: 24px;
   }
@@ -102,7 +148,15 @@ body * {
     font-size: 30px;
   }
   .reset {
-    font-size: 15px;
+    font-size: 22px;
+  }
+  .over h2 {
+    font-size: 100px;
+    margin-bottom: 22px;
+  }
+  
+  .over p {
+    font-size: 25px;
   }
 }
 @media screen and (max-width: 620px) {
@@ -110,7 +164,7 @@ body * {
     gap: 25px;
   }
   .box div {
-    height: 130px;
+    height: 110px;
   }
   .score {
     font-size: 24px;
@@ -124,16 +178,17 @@ body * {
   .score p span {
     font-size: 30px;
   }
+
+  .over h2 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .over p {
+    font-size: 20px;
+  }
 }
 
-@media screen and (max-width: 620px) {
-  .box {
-    gap: 25px;
-  }
-  .box div {
-    height: 110px;
-  }
-}
 @media screen and (max-width: 410px) {
   .box {
     gap: 15px;
