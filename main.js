@@ -33,6 +33,7 @@ function mySharedLogic() {
   elements.forEach((element, i) => {
     element.style.backgroundColor = shuffled[i];
     element.style.backgroundImage = "url(./img/cardbg.png)";
+    element.classList.remove("disabled");
   });
 }
 
@@ -53,8 +54,9 @@ let disable = false;
 
 elements.forEach((element, i) =>
   element.addEventListener("click", () => {
-    if (disable) return;
-
+    if (disable || element.classList.contains("disabled")) return;
+    
+    element.classList.add("disabled");
     if (counter) {
       first = element;
       element.style.backgroundImage = "none";
@@ -78,6 +80,8 @@ function checkWinner(first, second) {
     setTimeout(() => {
       first.style.backgroundImage = "url(./img/cardbg.png)";
       second.style.backgroundImage = "url(./img/cardbg.png)";
+      first.classList.remove("disabled");
+      second.classList.remove("disabled");
       disable = false;
     }, 1000);
   }
