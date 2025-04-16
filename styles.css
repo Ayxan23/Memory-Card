@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-color: rgb(35, 35, 35);
+  color: white;
+}
+
+body * {
+  font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.container {
+  width: 92%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.score {
+  text-align: center;
+  font-size: 34px;
+  margin-top: 15px;
+}
+
+.score p {
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.score h2,
+.score p span {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.score p span:nth-child(1) {
+  color: rgb(0, 251, 255);
+}
+
+.reset {
+  background-color: rgb(0, 197, 138);
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  aspect-ratio: 1/1;
+  font-weight: 500;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+.reset:active {
+  opacity: 0.8;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.box div {
+  height: 150px;
+  aspect-ratio: 3/4.3;
+  border-radius: 10px;
+  cursor: pointer;
+  background-image: url(./img/cardbg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 2px solid rgb(0, 129, 152);
+}
+
+.box div:active {
+  opacity: 0.8;
+}
+.box div:hover {
+  box-shadow: rgba(0, 129, 152, 0.496) 0px 7px 29px 0px;
+  transition: 0.15s;
+}
+
+@media screen and (max-width: 750px) {
+  .score {
+    font-size: 24px;
+  }
+  .score p {
+    margin-top: 5px;
+  }
+
+  .score h2,
+  .score p span {
+    font-size: 30px;
+  }
+  .reset {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .box {
+    gap: 25px;
+  }
+  .box div {
+    height: 130px;
+  }
+  .score {
+    font-size: 24px;
+  }
+
+  .score p {
+    margin-top: 5px;
+  }
+
+  .score h2,
+  .score p span {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .box {
+    gap: 25px;
+  }
+  .box div {
+    height: 110px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .box {
+    gap: 15px;
+  }
+  .box div {
+    height: 90px;
+  }
+}
